@@ -5,7 +5,15 @@
 
     <fragment android:id="@+id/signUpFragment"
               android:name="example.test.phong.wikibot.ui.login.SignUpFragment"
-              android:label="sign_up_fragment" tools:layout="@layout/sign_up_fragment"/>
+              android:label="sign_up_fragment" tools:layout="@layout/sign_up_fragment">
+        <action android:id="@+id/action_signUpFragment_to_loginFragment"
+                app:destination="@id/loginFragment"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+
     <fragment android:id="@+id/loginFragment"
               android:name="example.test.phong.wikibot.ui.login.LoginFragment" android:label="fragment_login"
               tools:layout="@layout/fragment_login"/>

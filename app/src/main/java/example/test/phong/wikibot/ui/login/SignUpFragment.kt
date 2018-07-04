@@ -1,13 +1,15 @@
 package example.test.phong.wikibot.ui.login
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import example.test.phong.wikibot.R
 import example.test.phong.wikibot.ui.main.MainViewModel
+import kotlinx.android.synthetic.main.sign_up_fragment.*
 
 class SignUpFragment : Fragment() {
 
@@ -26,6 +28,7 @@ class SignUpFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
+        button_login.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signUpFragment_to_loginFragment, null))
     }
 
 }

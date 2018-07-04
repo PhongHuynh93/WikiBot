@@ -8,4 +8,5 @@
     android:layout_height="match_parent"
     android:name="androidx.navigation.fragment.NavHostFragment"
     app:navGraph="@navigation/login_navigation"
+    app:defaultNavHost="true"
     tools:context=".LoginActivity"/>
