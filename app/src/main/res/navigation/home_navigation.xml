@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            app:startDestination="@id/exploreFragment">
+    <fragment android:id="@+id/exploreFragment"
+              android:name="example.test.phong.wikibot.ui.main.ExploreFragment"
+              android:label="fragment_explore" tools:layout="@layout/fragment_explore"/>
+    <fragment android:id="@+id/saveArticleFragment"
+              android:name="example.test.phong.wikibot.ui.main.SaveArticleFragment"
+              android:label="fragment_save_article" tools:layout="@layout/fragment_save_article"/>
+    <fragment android:id="@+id/historyFragment"
+              android:name="example.test.phong.wikibot.ui.main.HistoryFragment"
+              android:label="fragment_history" tools:layout="@layout/fragment_history"/>
+</navigation>

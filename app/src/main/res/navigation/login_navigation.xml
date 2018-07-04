@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" app:startDestination="@id/signUpFragment">
+
+    <fragment android:id="@+id/signUpFragment"
+              android:name="example.test.phong.wikibot.ui.login.SignUpFragment"
+              android:label="sign_up_fragment" tools:layout="@layout/sign_up_fragment"/>
+    <fragment android:id="@+id/loginFragment"
+              android:name="example.test.phong.wikibot.ui.login.LoginFragment" android:label="fragment_login"
+              tools:layout="@layout/fragment_login"/>
+</navigation>
