@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:theme="@style/AppTheme.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -21,10 +21,10 @@
         <activity
             android:name=".ui.HomeActivity"
             android:label="@string/title_activity_home"
-            android:parentActivityName=".LoginActivity">
+            android:parentActivityName=".ui.LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="example.test.phong.wikibot.LoginActivity"/>
+                android:value="example.test.phong.wikibot.ui.LoginActivity"/>
         </activity>
     </application>
 

@@ -2,11 +2,14 @@ package example.test.phong.wikibot.ui.login
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import example.test.phong.wikibot.R
+import example.test.phong.wikibot.util.Navigator
+import kotlinx.android.synthetic.main.sign_up_fragment.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,5 +29,11 @@ class LoginFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        button_signup.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_signUpFragment, null))
+        button_login.setOnClickListener {
+            Navigator.openMain(context!!)
+        }
+    }
 }

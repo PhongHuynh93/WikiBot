@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import example.test.phong.wikibot.R
 import example.test.phong.wikibot.ui.main.MainViewModel
+import example.test.phong.wikibot.util.Navigator
 import kotlinx.android.synthetic.main.sign_up_fragment.*
 
 class SignUpFragment : Fragment() {
@@ -28,7 +29,10 @@ class SignUpFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
-        button_login.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signUpFragment_to_loginFragment, null))
+        button_signup.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_signUpFragment_to_loginFragment, null))
+        button_login.setOnClickListener {
+            Navigator.openMain(context!!)
+        }
     }
 
 }

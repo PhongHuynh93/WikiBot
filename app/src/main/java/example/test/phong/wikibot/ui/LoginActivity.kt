@@ -1,7 +1,8 @@
-package example.test.phong.wikibot
+package example.test.phong.wikibot.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import example.test.phong.wikibot.R
 
 class LoginActivity : AppCompatActivity() {
 

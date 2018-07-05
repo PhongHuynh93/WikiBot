@@ -9,4 +9,4 @@
     android:name="androidx.navigation.fragment.NavHostFragment"
     app:navGraph="@navigation/login_navigation"
     app:defaultNavHost="true"
-    tools:context=".LoginActivity"/>
+    tools:context=".ui.LoginActivity"/>
