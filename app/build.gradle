@@ -44,6 +44,6 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     // use -ktx for Kotlin
 
-    implementation 'androidx.core:core-ktx:1.0.0-alpha1'
+    implementation 'androidx.core:core-ktx:1.0.0-beta01'
 
 }
