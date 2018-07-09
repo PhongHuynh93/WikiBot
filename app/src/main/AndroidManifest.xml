@@ -21,6 +21,7 @@
         <activity
             android:name=".ui.HomeActivity"
             android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.Home"
             android:parentActivityName=".ui.LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

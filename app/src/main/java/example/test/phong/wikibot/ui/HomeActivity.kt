@@ -2,12 +2,17 @@ package example.test.phong.wikibot.ui
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import example.test.phong.wikibot.R
+import example.test.phong.wikibot.ui.main.ExploreFragment
+import example.test.phong.wikibot.ui.main.HistoryFragment
+import example.test.phong.wikibot.ui.main.SaveArticleFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
@@ -30,7 +35,11 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         setSupportActionBar(toolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val actionbar: ActionBar? = supportActionBar
+        actionbar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp)
+        }
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
@@ -50,13 +59,14 @@ class HomeActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
-
-        if (id == R.id.action_settings) {
-            return true
+        when (item.itemId) {
+            android.R.id.home -> {
+                drawer_layout.openDrawer(GravityCompat.START)
+                return true
+            }
+            R.id.action_settings -> {
+                return true
+            }
         }
 
         return super.onOptionsItemSelected(item)
@@ -70,14 +80,27 @@ class HomeActivity : AppCompatActivity() {
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
         override fun getItem(position: Int): Fragment {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1)
+            when (position) {
+                0 -> {
+                    return ExploreFragment.newInstance()
+                }
+                1 -> {
+                    return SaveArticleFragment.newInstance()
+                }
+                2 -> {
+                    return PlaceholderFragment.newInstance(position + 1)
+                }
+                3 -> {
+                    return HistoryFragment.newInstance()
+                }
+                else -> {
+                    return PlaceholderFragment.newInstance(0)
+                }
+            }
         }
 
         override fun getCount(): Int {
-            // Show 3 total pages.
-            return 3
+            return 4
         }
     }
 

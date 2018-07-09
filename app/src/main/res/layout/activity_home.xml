@@ -4,9 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:openDrawer="start">
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -14,7 +16,6 @@
         android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
         tools:context=".ui.HomeActivity">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -28,11 +29,11 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:layout_weight="1"
-                android:background="?attr/colorPrimary"
+                android:background="@android:color/white"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/AppTheme.PopupOverlay"
-                app:title="@string/app_name">
+                app:title="@string/app_name"
+                app:titleTextColor="@color/nearBlack">
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -74,8 +75,10 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
+        android:fitsSystemWindows="true"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"

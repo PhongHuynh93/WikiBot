@@ -1,4 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <item
+        android:id="@+id/item_offline_access"
+        android:icon="@drawable/ic_offline_access"
+        android:title="Offline access"/>
+    <item
+        android:id="@+id/item_support"
+        android:icon="@drawable/ic_support"
+        android:title="Support App"/>
+    <item
+        android:id="@+id/item_rate"
+        android:icon="@drawable/ic_star"
+        android:title="Rate App"/>
+    <item
+        android:id="@+id/item_language"
+        android:icon="@drawable/ic_language"
+        android:title="My languages"/>
+    <item
+        android:id="@+id/item_theme"
+        android:icon="@drawable/ic_theme"
+        android:title="Default theme"/>
+    <item
+        android:id="@+id/item_privacy"
+        android:icon="@drawable/ic_privacy"
+        android:title="Privacy Policy"/>
+    <item
+        android:id="@+id/item_term"
+        android:icon="@drawable/ic_term"
+        android:title="Terms of Use"/>
+    <item
+        android:id="@+id/item_help"
+        android:icon="@drawable/ic_help"
+        android:title="Help &amp; Feedback"/>
+    <item
+        android:id="@+id/item_app"
+        android:icon="@drawable/ic_app"
+        android:title="About the app"/>
 </menu>

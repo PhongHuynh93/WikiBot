@@ -14,4 +14,10 @@
     <string name="login_confirm_password">Confirm password</string>
     <string name="login_sign_up">Sign up</string>
     <string name="login_in">Log in</string>
+
+    <!--home page-->
+    <string name="tab_1">Explore Wikipedia</string>
+    <string name="tab_2">Saved articles</string>
+    <string name="tab_3">…</string>
+    <string name="tab_4">History</string>
 </resources>

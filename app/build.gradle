@@ -45,5 +45,6 @@ dependencies {
     // use -ktx for Kotlin
 
     implementation 'androidx.core:core-ktx:1.0.0-beta01'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
 }

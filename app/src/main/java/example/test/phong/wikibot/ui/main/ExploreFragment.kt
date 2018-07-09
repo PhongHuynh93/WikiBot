@@ -2,23 +2,22 @@ package example.test.phong.wikibot.ui.main
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import example.test.phong.wikibot.R
-
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import kotlinx.android.synthetic.main.fragment_explore.*
 
 /**
  * A simple [Fragment] subclass.
  *
  */
 class ExploreFragment : Fragment() {
+    companion object {
+        fun newInstance() = ExploreFragment()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -26,5 +25,10 @@ class ExploreFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_explore, container, false)
     }
 
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        rcv.adapter = ExploreAdapter()
+        rcv.setHasFixedSize(true)
+        rcv.layoutManager = LinearLayoutManager(context)
+    }
 }

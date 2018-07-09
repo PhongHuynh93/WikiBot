@@ -5,4 +5,5 @@
     <color name="colorAccent">@color/blue</color>
 
     <color name="blue">#2297f3</color>
+    <color name="nearBlack">#303030</color>
 </resources>
