@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/CustomFont</item>
     </style>
 
     <style name="AppTheme.TransparentStatusBar">
@@ -20,10 +21,13 @@
 
     <style name="AppTheme.Home">
         <!--<item name="android:windowTranslucentStatus">true</item>-->
-        <item name="android:windowBackground">#dfdfdf</item>
+        <item name="android:windowBackground">@color/quiteWhite</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+    <style name="CustomFont" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
 </resources>
