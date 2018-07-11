@@ -4,15 +4,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.RequestManager
 import example.test.phong.wikibot.R
 import example.test.phong.wikibot.ui.main.ExploreAdapter.Companion.TYPE_CONTENT
 import example.test.phong.wikibot.ui.main.ExploreAdapter.Companion.TYPE_CONTENT_OTHER
 import example.test.phong.wikibot.ui.main.ExploreAdapter.Companion.TYPE_HEADER
 import example.test.phong.wikibot.ui.main.ExploreAdapter.Companion.TYPE_VIEW_MORE
+import kotlinx.android.synthetic.main.item_explore_content.view.*
+import kotlinx.android.synthetic.main.item_explore_content_other.view.*
+import kotlinx.android.synthetic.main.item_explore_header.view.*
+import kotlinx.android.synthetic.main.item_explore_view_more.view.*
 import java.util.*
 
 
-class ExploreAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ExploreAdapter(private val requestManager: RequestManager) : RecyclerView.Adapter<ExploreVH>() {
     private val mData: MutableList<ExploreModel> = ArrayList()
 
     companion object {
@@ -41,7 +46,7 @@ class ExploreAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         mData.add(ExploreViewMore("All top read articles on June 21"))
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExploreVH {
         when (viewType) {
             TYPE_HEADER -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_explore_header, parent, false)
@@ -49,11 +54,11 @@ class ExploreAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
             TYPE_CONTENT -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_explore_content, parent, false)
-                return ExploreContentVH(view)
+                return ExploreContentVH(view, requestManager)
             }
             TYPE_CONTENT_OTHER -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_explore_content_other, parent, false)
-                return ExploreContentOtherVH(view)
+                return ExploreContentOtherVH(view, requestManager)
             }
             TYPE_VIEW_MORE -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_explore_view_more, parent, false)
@@ -71,46 +76,77 @@ class ExploreAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return mData.size
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ExploreVH, position: Int) {
+        val model = mData.get(position)
+        holder.bind(model)
     }
 
 }
 
-class ExploreViewMoreVH(view: View) : RecyclerView.ViewHolder(view) {
+class ExploreViewMoreVH(view: View) : ExploreVH(view) {
+    override fun bind(model: ExploreModel) {
+        if (model is ExploreViewMore) {
+            itemView.textView5.text = model.title
+        }
+    }
 
 }
 
-class ExploreContentOtherVH(view: View) : RecyclerView.ViewHolder(view) {
+class ExploreContentOtherVH(view: View, val requestManager: RequestManager) : ExploreVH(view) {
+    override fun bind(model: ExploreModel) {
+        if (model is ExploreContentOther) {
+            requestManager.load(model.thumb).into(itemView.imageView5)
+            itemView.tv1.text = model.title
+            itemView.tv2.text = model.title2
+        }
+    }
 
 }
 
-class ExploreContentVH(view: View) : RecyclerView.ViewHolder(view) {
+class ExploreContentVH(view: View, val requestManager: RequestManager) : ExploreVH(view) {
+    override fun bind(model: ExploreModel) {
+        if (model is ExploreContent) {
+            requestManager.load(model.thumb).into(itemView.imageView_content)
+            itemView.textView_over_image.text = model.title1
+            itemView.textView1.text = model.title2
+            itemView.textView2.text = model.title3
+        }
+    }
+}
+
+class ExploreHeaderVH(view: View) : ExploreVH(view) {
+    override fun bind(model: ExploreModel) {
+        if (model is ExploreHeader) {
+            itemView.textView3.text = model.title1
+            itemView.textView4.text = model.subTitle1
+        }
+    }
 
 }
 
-class ExploreHeaderVH(view: View) : RecyclerView.ViewHolder(view) {
-
+abstract class ExploreVH(view: View): RecyclerView.ViewHolder(view) {
+    abstract fun bind(model: ExploreModel)
 }
 
-class ExploreViewMore(title: String) : ExploreModel {
+class ExploreViewMore(val title: String) : ExploreModel {
     override fun getType(): Int {
         return TYPE_VIEW_MORE
     }
 }
 
-class ExploreContentOther(title: String, title2: String, thumb: String) : ExploreModel {
+class ExploreContentOther(val title: String, val title2: String, val thumb: String) : ExploreModel {
     override fun getType(): Int {
         return TYPE_CONTENT_OTHER
     }
 }
 
-class ExploreContent(title1: String, title2: String, title3: String, thumb: String) : ExploreModel {
+class ExploreContent(val title1: String, val title2: String, val title3: String, val thumb: String) : ExploreModel {
     override fun getType(): Int {
         return TYPE_CONTENT
     }
 }
 
-class ExploreHeader(title1: String, subTitle1: String) : ExploreModel {
+class ExploreHeader(val title1: String, val subTitle1: String) : ExploreModel {
     override fun getType() = TYPE_HEADER
 }
 
